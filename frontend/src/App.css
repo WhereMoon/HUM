@@ -1,0 +1,26 @@
+.app {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #111; /* 深色背景 */
+  overflow: hidden; /* 防止页面整体滚动 */
+}
+
+.app-container {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 400px; /* 左边数字人，右边聊天 */
+  gap: 0; /* 移除 gap，让两者紧挨 */
+  padding: 0; /* 移除 padding，全屏显示 */
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .app-container {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 40%; /* 移动端：上方数字人，下方聊天 */
+  }
+}

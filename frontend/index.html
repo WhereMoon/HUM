@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>数字人陪伴系统</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <!-- Load Live2D Cubism Core before pixi-live2d-display -->
+    <!-- 必须同步加载，确保在模块加载前完成 -->
+    <script>
+      // 检查 Cubism Core 加载状态
+      window.addEventListener('load', function() {
+        console.log('Page loaded, checking Cubism Core...');
+        console.log('window.Live2DCubismCore:', typeof window.Live2DCubismCore);
+        if (window.Live2DCubismCore) {
+          console.log('✅ Cubism Core loaded successfully');
+        } else {
+          console.error('❌ Cubism Core not found!');
+        }
+      });
+    </script>
+    <!-- 使用 defer 确保在 DOM 加载后执行，但仍在模块加载前 -->
+    <script src="/models/CubismSdkForWeb-5-r.4/Core/live2dcubismcore.min.js" 
+            onload="console.log('Cubism Core script loaded'); console.log('Live2DCubismCore:', typeof window.Live2DCubismCore);"
+            onerror="console.error('Failed to load Cubism Core script')"></script>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

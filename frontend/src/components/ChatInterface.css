@@ -1,0 +1,200 @@
+.chat-interface {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  background: #1a1a1a;
+  border-left: 1px solid #333;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.chat-header {
+  padding: 16px;
+  border-bottom: 1px solid #333;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0; /* 防止头部被压缩 */
+}
+
+.chat-header h3 {
+  margin: 0;
+  font-size: 18px;
+  color: #fff;
+}
+
+.connection-status {
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.connection-status.connected {
+  color: #4caf50;
+  background: rgba(76, 175, 80, 0.1);
+}
+
+.connection-status.disconnected {
+  color: #f44336;
+  background: rgba(244, 67, 54, 0.1);
+}
+
+.chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-height: 0; /* 关键：Flex子项滚动必须设置 */
+}
+
+/* 美化滚动条 */
+.chat-messages::-webkit-scrollbar {
+  width: 6px;
+}
+
+.chat-messages::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+
+.chat-messages::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 3px;
+}
+
+.chat-messages::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.empty-state {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #888;
+  text-align: center;
+}
+
+.empty-state .hint {
+  font-size: 14px;
+  margin-top: 8px;
+  opacity: 0.7;
+}
+
+.message {
+  max-width: 80%;
+  padding: 10px 14px;
+  border-radius: 12px;
+  word-wrap: break-word;
+}
+
+.message.user {
+  align-self: flex-end;
+  background: #007bff;
+  color: #fff;
+}
+
+.message.ai {
+  align-self: flex-start;
+  background: #2a2a2a;
+  color: #fff;
+}
+
+.message.thinking {
+  opacity: 0.7;
+}
+
+.message-content {
+  margin-bottom: 4px;
+  line-height: 1.5;
+}
+
+.message-time {
+  font-size: 11px;
+  opacity: 0.6;
+  margin-top: 4px;
+}
+
+.typing-indicator {
+  font-style: italic;
+}
+
+.chat-input-area {
+  padding: 16px;
+  border-top: 1px solid #333;
+  background: #1a1a1a;
+  flex-shrink: 0;
+}
+
+.input-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.text-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #333;
+  border-radius: 8px;
+  background: #2a2a2a;
+  color: #fff;
+  font-family: inherit;
+  font-size: 14px;
+  resize: none;
+  box-sizing: border-box; /* 确保 padding 不增加宽度 */
+}
+
+.text-input:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+.button-group {
+  display: flex;
+  gap: 8px;
+}
+
+.record-button,
+.send-button {
+  flex: 1;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.record-button {
+  background: #f44336;
+  color: #fff;
+}
+
+.record-button.recording {
+  background: #ff5252;
+  animation: pulse 1s infinite;
+}
+
+.send-button {
+  background: #007bff;
+  color: #fff;
+}
+
+.send-button:disabled,
+.record-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
